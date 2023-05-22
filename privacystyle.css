@@ -1,0 +1,66 @@
+/* Body Styles */
+body {
+  background-color: #f7f7f7;
+  font-family: Arial, sans-serif;
+  color: #333333;
+  margin: 0;
+}
+
+/* Header Styles */
+h1 {
+  font-size: 48px;
+  text-align: center;
+  margin-top: 50px;
+  color: #00b8d4;
+  text-shadow: 2px 2px #ffffff;
+}
+
+/* Paragraph Styles */
+p {
+  font-size: 16px;
+  line-height: 1.5em;
+  margin: 20px 0;
+}
+
+/* Section Header Styles */
+h2 {
+  font-size: 32px;
+  color: #008cba;
+  margin: 30px 0 10px;
+  text-shadow: 1px 1px #ffffff;
+}
+
+/* Button Styles */
+button {
+  background-color: #008cba;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #00b8d4;
+  color: #ffffff;
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}

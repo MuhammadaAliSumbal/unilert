@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="user-main.jpg">
+  <title>ChatBot</title>
+</head>
+<body>
+  <style>body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+  }
+  
+  .chat-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .chat-box {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    margin-bottom: 15px;
+  }
+  
+  .sent .text {
+    background-color: #f5f5f5;
+    color: #555;
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 70%;
+  }
+  
+  .received .avatar {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #555;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .received .text {
+    background-color: #cceeff;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 80%;
+  }
+  
+  .input-container {
+    padding: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+  
+  .send-button {
+    background-color: #e47e10;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #49cad0;
+  }
+  </style>
+  <div class="chat-container">
+    <div id="chatContainer" class="chat-box"></div>
+    <div class="input-container">
+      <input type="text" id="userInput" class="user-input" placeholder="Type your message..." autocomplete="off">
+      <button id="sendButton" class="send-button">Send</button>
+    </div>
+  </div>
+<script>document.addEventListener('DOMContentLoaded', function () {
+  var userInput = document.getElementById('userInput');
+  var sendButton = document.getElementById('sendButton');
+
+  userInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      handleUserInput();
+    }
+  });
+
+  sendButton.addEventListener('click', handleUserInput);
+});
+
+function handleUserInput() {
+  var userInput = document.getElementById('userInput');
+  var chatContainer = document.getElementById('chatContainer');
+  var userMessage = userInput.value;
+
+  if (userMessage.trim() === '') {
+    return;
+  }
+
+  var userMessageElement = document.createElement('div');
+  userMessageElement.className = 'message sent';
+  userMessageElement.innerHTML = '<span class="text">' + userMessage + '</span>';
+  chatContainer.appendChild(userMessageElement);
+  userInput.value = '';
+
+  // Generate bot response
+  generateBotResponse(userMessage)
+    .then(function (botMessage) {
+      var botMessageElement = document.createElement('div');
+      botMessageElement.className = 'message received';
+      botMessageElement.innerHTML = '<span class="avatar"></span><span class="text">' + botMessage + '</span>';
+      chatContainer.appendChild(botMessageElement);
+
+      // Scroll to the bottom of the chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    })
+    .catch(function (error) {
+      console.error('Error generating bot response:', error);
+    });
+}
+
+function generateBotResponse(userMessage) {
+  return new Promise(function (resolve, reject) {
+    // Simulate bot response delay (replace with actual bot logic)
+    setTimeout(function () {
+      // You can customize the bot's response logic here
+      var botResponse = '';
+
+      // Check if the user message is a math problem
+      if (isMathProblem(userMessage)) {
+        try {
+          var result = evaluateMathExpression(userMessage);
+          botResponse = 'The result of ' + userMessage + ' is: ' + result;
+        } catch (error) {
+          botResponse = 'Sorry, I couldn\'t solve that math problem. Please try again.';
+        }
+      } else {
+        // Basic question handling
+        var lowerCaseMessage = userMessage.toLowerCase();
+
+        if (lowerCaseMessage.includes('hello') || lowerCaseMessage.includes('hi')) {
+          botResponse = getGreetingResponse();
+        } else if (lowerCaseMessage.includes('how are you')) {
+          botResponse = 'I am an AI chatbot, so I do not have feelings, but thank you for asking!';
+        } else if (lowerCaseMessage.includes('what is your name')) {
+          botResponse = 'My name is ChatBot.';
+        } else if (lowerCaseMessage.includes('thank you') || lowerCaseMessage.includes('thanks')) {
+          botResponse = 'You\'re welcome!';
+        } else if (lowerCaseMessage.includes('date') || lowerCaseMessage.includes('day')) {
+          botResponse = getCurrentDateResponse();
+        } else if (lowerCaseMessage.includes('time')) {
+          botResponse = getCurrentTimeResponse();
+        } else {
+          botResponse = 'I apologize, but I am unable to answer that question. Please contact my developer for assistance.';
+        }
+      }
+
+      resolve(botResponse);
+    }, 500); // Delay in milliseconds before the bot generates a response
+  });
+}
+
+function isMathProblem(userMessage) {
+  // Simple check to determine if the user message contains a math problem
+  var mathOperators = ['+', '-', '*', '/', '%', '(', ')'];
+
+  for (var i = 0; i < mathOperators.length; i++) {
+    if (userMessage.includes(mathOperators[i])) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function evaluateMathExpression(expression) {
+  // Evaluate the math expression using custom logic
+  var sanitizedExpression = expression.replace(/[^-()\d/*+.]/g, '');
+  return Function('return ' + sanitizedExpression)();
+}
+
+function getGreetingResponse() {
+  // Return a random greeting response
+  var greetings = [
+    'Hello! How can I assist you today?',
+    'Hi there! How may I help you?',
+    'Greetings! What can I do for you?',
+    'Hey! How can I be of service?',
+    'Hi! What brings you here?'
+  ];
+
+  var randomIndex = Math.floor(Math.random() * greetings.length);
+  return greetings[randomIndex];
+}
+
+function getCurrentDateResponse() {
+  var currentDate = new Date();
+  var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  return 'Today is ' + currentDate.toLocaleDateString(undefined, options);
+}
+
+function getCurrentTimeResponse() {
+  var currentTime = new Date().toLocaleTimeString();
+  return 'The current time is ' + currentTime;
+}
+</script>
+  <script src="script.js"></script>
+</body>
+</html>

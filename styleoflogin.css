@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+  background-size: 120px 120px;
+  
+}
+
+.container {
+  width: 280px;
+  height: 500px;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#user-men {
+  font-size: 2.5rem;
+  margin: 10px 45%;
+  color: rgb(58, 58, 161);
+}
+
+.welcome-heading {
+  font-size: 1.1rem;
+  text-align: center;
+  text-transform: capitalize;
+  color: rgb(91, 129, 241);
+}
+
+.dkp-heading {
+  text-transform: uppercase;
+}
+
+.dtn-container {
+  margin: 40px 20px;
+}
+
+.dtn-container i {
+  margin-right: 8px;
+}
+
+.social-media-login {
+  text-decoration: none;
+  padding: 8px 15px;
+  background-color: #49cad0;
+  color: #fff;
+  border-radius: 20px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.social-media-login:hover {
+  background-color: #3ba7af;
+}
+
+.social-media-login1 {
+  text-decoration: none;
+  padding: 8px 15px;
+  background-color: #e47e10;
+  color: #fff;
+  border-radius: 20px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.social-media-login1:hover {
+  background-color: #cc6b0d;
+}
+
+.underline-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 15px 42px;
+}
+
+.underline {
+  width: 80px;
+  height: 2px;
+  background-color: rgb(161, 161, 161);
+}
+
+.or-heading {
+  text-align: center;
+  margin-top: -10px;
+  padding: 0px 10px;
+}
+
+.input-box {
+  width: 220px;
+  height: 30px;
+  margin: 10px 30px;
+  border-radius: 40px;
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding-left: 10px;
+}
+
+.input-box1 {
+  width: 220px;
+  height: 30px;
+  margin: 10px 30px 30px;
+  border-radius: 40px;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn {
+  margin: 30px;
+  padding: 8px 92px;
+  background-image: linear-gradient(to left, #49cad0,  #49cad0);
+  border-radius: 40px;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: capitalize;
+  transition: background-image 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+  background-image: linear-gradient(to left, #cc6b0d, #cc6b0d);
+}
+
+.forget-password {
+  position: absolute;
+  margin: 20px 70px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register {
+  position: absolute;
+  margin-top: 40px;
+  font-size: 0.8rem;
+  padding: 10px 20px;
+}
+
+.register-now {
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.register-now:hover {
+  color: #ff0000;
+}

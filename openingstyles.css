@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 0 0 20px;
+  color: #333;
+  text-align: center;
+}
+
+.jobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.job {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.job:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.job h3 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.job p {
+  margin: 0 0 10px;
+  color: #777;
+}
+
+.job button {
+  background-color: #49cad0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.job button:hover {
+  background-color: #e47e10;
+}
+
+.job a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.job.web-developer {
+  background-color: #0077b6;
+}
+
+.job.web-developer button {
+  background-color: #ff6b6b;
+}
+
+.job.graphic-designer {
+  background-color: #fcbf49;
+}
+
+.job.graphic-designer button {
+  background-color: #0077b6;
+}
+
+.job.marketing-manager {
+  background-color: #0077b6;
+}
+
+.job.marketing-manager button {
+  background-color: #fcbf49;
+}
+
+.job.data-analyst {
+  background-color: #ff6b6b;
+}
+
+.job.data-analyst button {
+  background-color: #0077b6;
+}
+
+.job.ui-ux-designer {
+  background-color: #fcbf49;
+}
+
+.job.ui-ux-designer button {
+  background-color: #ff6b6b;
+}
+
+@media screen and (max-width: 768px) {
+  .jobs {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

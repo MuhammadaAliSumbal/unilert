@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Now</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styleofsignup.css">
+    <link rel="icon" href="user-main.jpg">
+</head>
+<body>
+    <div class="container">
+      <style>
+        .responsive-img {
+          max-width: 100%;
+          height: auto;
+        }
+      </style>
+      
+      <img class="responsive-img" src="user-main.jpg" alt="Image">
+      
+        <h2 class="welcome-heading">Register Now</h2>
+        <div class="input-container">
+            <input class="input-box" type="text" placeholder="Username">
+            <input class="input-box" type="email" placeholder="Email">
+            <input class="input-box" type="password" placeholder="Password">
+            <input class="input-box" type="password" placeholder="Confirm Password">
+            <div class="privacy-policy-container">
+                <input type="checkbox" id="privacy-policy-checkbox">
+                <label for="privacy-policy-checkbox">I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a></label>
+            </div>
+            <a class="register-btn" href="#" onclick="validateForm()">Register</a>
+        </div>
+        <p id="error-message"></p>
+        <p class="login" style="margin-top: 20px;">Already have an account? <a class="login-now" href="login.html">Login Now</a></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var privacyPolicyCheckbox = document.getElementById("privacy-policy-checkbox");
+            if (!privacyPolicyCheckbox.checked) {
+                var errorMessage = document.getElementById("error-message");
+                errorMessage.textContent = "You must agree to the Privacy Policy.";
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>
